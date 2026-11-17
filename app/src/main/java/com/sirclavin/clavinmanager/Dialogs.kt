@@ -148,7 +148,7 @@ fun CloneAppOptions(state: AppState, pickers: Pickers, onChosen: (CloneApp) -> U
                     } else {
                         LuaImporter.persist(context, uri)
                         state.setTree(CloneApp.OTHER, uri.toString())
-                        state.setOtherPkg(LuaImporter.packageFromTree(uri))
+                        state.updateOtherPkg(LuaImporter.packageFromTree(uri))
                         choose(CloneApp.OTHER)
                     }
                 }
@@ -190,7 +190,7 @@ fun CloneAppOptions(state: AppState, pickers: Pickers, onChosen: (CloneApp) -> U
         PackagePickerDialog(
             onPick = { pkg ->
                 showPackages = false
-                state.setOtherPkg(pkg)
+                state.updateOtherPkg(pkg)
                 choose(CloneApp.OTHER)
             },
             onDismiss = { showPackages = false }
