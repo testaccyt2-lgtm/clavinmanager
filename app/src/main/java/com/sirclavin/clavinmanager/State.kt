@@ -140,7 +140,7 @@ class AppState(context: Context) {
     fun pkgOf(app: CloneApp): String? =
         app.pkg ?: otherPkg ?: treeFor(app)?.let { LuaImporter.packageFromTree(Uri.parse(it)) }
 
-    fun setOtherPkg(pkg: String?) {
+    fun updateOtherPkg(pkg: String?) {
         otherPkg = pkg
         sp.edit().apply { if (pkg == null) remove("other_pkg") else putString("other_pkg", pkg) }.apply()
     }
